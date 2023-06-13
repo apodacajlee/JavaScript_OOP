@@ -68,62 +68,94 @@ class Calculator {
     }
 
     add(x, y) {
-        if (y == undefined) {
-            x = this.result;
-            y = x;
+        if(arguments.length == 1) {
+            this.result += x;
+            
         }
 
-        this.result = x + y;
+        else {
+            this.result = x + y;
+        }
+
         return this.result;
     }
 
     subtract(x, y) {
-        if (y == undefined) {
-            x = this.result;
-            y = x;
+        if(arguments.length == 1) {
+            this.result -= x;
         }
 
-        this.result = x - y;
+        else {
+            this.result = x - y;
+        }
+
         return this.result;
     }
 
     multiply(x, y) {
-        if (y == undefined) {
-            x = this.result;
-            y = x;
+        if(arguments.length == 1) {
+            this.result *= x;
         }
 
-        this.result = x * y;
-        return this.result;
+        else {
+            this.result = x * y;
+            return this.result;
+        }
+
     }
 
     divide(x, y) {
-        if (y == undefined) {
-            x = this.result;
-            y = x;
+        if(arguments.length == 1) {
+            if(x != 0) {
+                this.result /= x;
+            }
+            else {
+                console.log("Cannot divide by 0");
+            }
         }
 
-        if(y != 0) {
-            this.result = x / y;
-        }
         else {
-            console.log("Cannot divide by 0");
+            if(y != 0) {
+                this.result = x / y;
+            }
+            else {
+                console.log("Cannot divide by 0");
+            }
         }
+
         return this.result;
+    }
+
+    displayResult() {
+        console.log(this.result);
     }
 }
 
-let testCalculator = new Calculator();
-console.log(testCalculator.add(2, 5)); // 2 + 5 = 7
-console.log(testCalculator.subtract(5, 2)); // 5 - 2 = 3
-console.log(testCalculator.multiply(5, 3)); // 5 * 3 = 15
-console.log(testCalculator.divide(100, 5)); // 100 / 5 = 20
+let testCalculator1 = new Calculator();
+testCalculator1.add(2, 5); // 2 + 5 = 7
+testCalculator1.displayResult();
+
+testCalculator1.subtract(5, 2); // 5 - 2 = 3
+testCalculator1.displayResult();
+
+testCalculator1.multiply(5, 3); // 5 * 3 = 15
+testCalculator1.displayResult();
+
+testCalculator1.divide(100, 5); // 100 / 5 = 20
+testCalculator1.displayResult();
 
 console.log("\n");
-testCalculator.subtract(1, 1); //reset calculator to 0
 
 //test passing only one variable into methods
-console.log(testCalculator.add(0, 100)); // 0 + 100 = 100
-console.log(testCalculator.subtract(testCalculator.result, 50)); // 100 - 50 = 50
-console.log(testCalculator.divide(testCalculator.result, 5)); // 50 / 5 = 10
-console.log(testCalculator.multiply(testCalculator.result, 3)); // 10 * 3 = 30
+let testCalculator2 = new Calculator();
+testCalculator2.add(8); // 0 + 8 = 8
+testCalculator2.displayResult();
+
+testCalculator2.subtract(2); // 8 - 2 = 6
+testCalculator2.displayResult();
+
+testCalculator2.divide(3); // 6 / 3 = 2
+testCalculator2.displayResult();
+
+testCalculator2.multiply(5); // 2 * 5 = 10
+testCalculator2.displayResult();
